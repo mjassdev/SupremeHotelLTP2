@@ -2,6 +2,9 @@ package application;
 
 import jdbc.ConnectionFactory;
 import model.Cliente;
+
+import java.util.List;
+
 import dao.ClienteDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +15,7 @@ import javafx.stage.Stage;
 public class Main extends Application{
 
 	public static void main(String[] args) {
-		
-		
+
 		launch(args);
 	}
 

@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
@@ -213,18 +214,19 @@
                         <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="35.0" prefHeight="30.0" prefWidth="70.0" text="Nome: " AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="35.0" />
                         <TextField fx:id="tfNomeCliente" layoutX="98.0" layoutY="30.0" prefHeight="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="35.0" />
                         <TextField fx:id="tfEndCliente" layoutX="130.0" layoutY="86.0" prefHeight="30.0" prefWidth="398.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="75.0" />
-                        <TextField fx:id="tfCpfCliente" layoutX="130.0" layoutY="118.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="115.0" />
                         <Label alignment="CENTER_RIGHT" layoutX="58.0" layoutY="71.0" prefHeight="30.0" prefWidth="70.0" text="Endereço:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="75.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="123.0" prefHeight="30.0" prefWidth="70.0" text="CPF:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="115.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="331.0" layoutY="122.0" prefHeight="30.0" prefWidth="70.0" text="Telefone:" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="115.0" />
-                        <TextField fx:id="tfTelCliente" layoutX="390.0" layoutY="117.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="115.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="164.0" prefHeight="30.0" prefWidth="70.0" text="Email:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="155.0" />
-                        <TextField fx:id="tfEmailCliente" layoutX="132.0" layoutY="150.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="155.0" />
-                        <Label alignment="CENTER_RIGHT" layoutX="410.0" layoutY="75.0" prefHeight="30.0" prefWidth="70.0" text="Cidade:" AnchorPane.rightAnchor="220.0" />
                         <TextField fx:id="tfCidadeCliente" layoutX="383.0" layoutY="77.0" prefHeight="30.0" prefWidth="90.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="75.0" />
+                        <TextField fx:id="tfUfCliente" layoutX="691.0" layoutY="72.0" prefHeight="30.0" prefWidth="40.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0" />
+                        <TextField fx:id="tfCpfCliente" layoutX="130.0" layoutY="118.0" prefHeight="30.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="115.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="70.0" layoutY="123.0" prefHeight="30.0" prefWidth="70.0" text="CPF:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="115.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="525.0" layoutY="115.0" prefHeight="30.0" prefWidth="70.0" text="Telefone:" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="115.0" />
+                        <TextField fx:id="tfTelCliente" layoutX="390.0" layoutY="117.0" prefHeight="30.0" prefWidth="190.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="115.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="86.0" layoutY="164.0" prefHeight="30.0" prefWidth="70.0" text="Email:" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="155.0" />
+                        <TextField fx:id="tfEmailCliente" layoutX="132.0" layoutY="150.0" prefHeight="30.0" prefWidth="400.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="155.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="410.0" layoutY="75.0" prefHeight="30.0" prefWidth="70.0" text="Cidade:" AnchorPane.rightAnchor="220.0" />
                         <Button fx:id="btCadastrarCliente" layoutX="491.0" layoutY="203.0" mnemonicParsing="false" prefWidth="80.0" text="Cadastrar" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="200.0" />
                         <Button fx:id="btLimparCliente" layoutX="415.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleLimpar" prefWidth="60.0" text="Limpar" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="200.0" />
-                        <TableView layoutX="67.0" layoutY="262.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
+                        <TableView fx:id="tabelaClientes" layoutX="67.0" layoutY="262.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
                           <columns>
                             <TableColumn fx:id="tbIdCliente" prefWidth="32.63251495361328" text="ID" />
                             <TableColumn fx:id="tbNomeCliente" prefWidth="95.61935806274414" text="Nome" />
@@ -234,12 +236,14 @@
                               <TableColumn fx:id="tbUfCliente" prefWidth="58.282867431640625" text="UF" />
                               <TableColumn fx:id="tbTelCliente" prefWidth="103.02630615234375" text="Telefone" />
                               <TableColumn fx:id="tbEmailCliente" prefWidth="106.0621337890625" text="Email" />
-                              <TableColumn fx:id="tbCpfCliente1" prefWidth="108.93792724609375" text="Data de Nasc." />
+                              <TableColumn fx:id="tbDataNascCliente" prefWidth="108.93792724609375" text="Data de Nasc." />
                           </columns>
                         </TableView>
                         <Label alignment="CENTER_RIGHT" layoutX="668.0" layoutY="74.0" prefHeight="30.0" prefWidth="30.0" text="UF:" AnchorPane.rightAnchor="70.0" />
-                        <TextField fx:id="tfUfCliente" layoutX="691.0" layoutY="72.0" prefHeight="30.0" prefWidth="40.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="75.0" />
                         <Label alignment="CENTER" layoutX="400.0" layoutY="14.0" text="GERENCIAMENTO DE CLIENTES" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0" />
+                        <Button fx:id="btDeletarCliente" layoutX="694.0" layoutY="479.0" mnemonicParsing="false" prefWidth="80.0" text="Deletar" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="20.0" />
+                        <Label alignment="CENTER_RIGHT" layoutX="513.0" layoutY="155.0" prefHeight="30.0" prefWidth="94.0" text="Nascimento:" AnchorPane.rightAnchor="215.0" />
+                        <DatePicker fx:id="dtNascCliente" layoutX="637.0" layoutY="156.0" prefHeight="27.0" prefWidth="190.0" AnchorPane.rightAnchor="20.0" />
                      </children>
                   </AnchorPane>
             </content>
